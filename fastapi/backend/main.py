@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordRequestForm 
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,13 +7,46 @@ from sqlalchemy.orm import sessionmaker, Session
 from datetime import datetime
 from pydantic import BaseModel
 import bcrypt
+# 환경 변수 로드를 위해 BaseSettings 또는 python-dotenv 임포트
+# Pydantic의 BaseSettings를 사용하는 것이 일반적입니다.
+from pydantic_settings import BaseSettings # pydantic v2 이상에서는 pydantic_settings에서 임포트
+# 또는 python-dotenv를 사용하는 경우:
+# from dotenv import load_dotenv
+# import os
 
+# .env 파일에서 환경 변수 로드 (python-dotenv 사용하는 경우)
+# load_dotenv()
+
+
+# ----<설정 클래스 정의 (환경 변수 로드용)>------
+
+# Pydantic의 BaseSettings를 상속받아 설정 클래스 정의
+class Settings(BaseSettings):
+    # .env 파일에서 DB_USER, DB_PASSWORD 등의 환경 변수 값을 자동으로 불러옵니다.
+    # 환경 변수 이름과 클래스 변수 이름을 동일하게 설정합니다.
+    DB_USER: str
+    DB_PASSWORD: str
+    DB_HOST: str
+    DB_NAME: str
+
+    # Pydantic BaseSettings의 내부 클래스 (설정 관리)
+    class Config:
+        # .env 파일 경로 지정
+        env_file = "C:\\Users\\hanmy\\fast_api\\fastapi\\backend\\.gitignore\\.env"
+
+
+# 설정 객체 생성
+settings = Settings()
 
 
 # ----<데이터베이스 설정>------
-# MySQL 데이터베이스 연결 URL
-# your_password 부분을 실제 root 사용자의 비밀번호로 변경하세요.
-DATABASE_URL = "mysql+mysqlconnector://root:as*3136ly@localhost/Login_SignUp"
+# MySQL 데이터베이스 연결 URL을 환경 변수에서 읽어온 값으로 조합
+# settings 객체를 통해 .env 파일의 값에 접근합니다.
+DATABASE_URL = f"mysql+mysqlconnector://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}/{settings.DB_NAME}"
+
+# 또는 python-dotenv 사용 시:
+# DATABASE_URL = f"mysql+mysqlconnector://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
+
 
 # SQLAlchemy 엔진 생성
 engine = create_engine(DATABASE_URL)
@@ -122,7 +155,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
-            headers={"WWW-Authenticate": "Bearer"}, 
+            headers={"WWW-Authenticate": "Bearer"},
         )
 
 
