@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import sessionmaker, Session
 from datetime import datetime
 from pydantic import BaseModel
+from backend.routers import post_router
 import bcrypt
 # 환경 변수 로드를 위해 BaseSettings 또는 python-dotenv 임포트
 # Pydantic의 BaseSettings를 사용하는 것이 일반적입니다.
@@ -31,8 +32,7 @@ class Settings(BaseSettings):
 
     # Pydantic BaseSettings의 내부 클래스 (설정 관리)
     class Config:
-        # .env 파일 경로 지정
-        env_file = "C:\\Users\\hanmy\\fast_api\\fastapi\\backend\\.gitignore\\.env"
+        env_file = "backend/.env"
 
 
 # 설정 객체 생성
@@ -176,6 +176,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(post_router.router)
 
 
 # uvicorn backend.main:app --reload

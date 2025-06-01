@@ -1,0 +1,31 @@
+# Python 캐시 파일 무시
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상환경 폴더 무시 (.venv, venv, env 등)
+.venv/
+venv/
+env/
+
+# IDE 설정 파일 무시 (VSCode)
+.vscode/
+
+# 시스템 파일 무시 (macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# 로그 파일 무시
+*.log
+
+# 파이썬 패키지 배포용 파일 무시
+build/
+dist/
+*.egg-info/
+
+# 기타
+*.sqlite3
+*.db
+*.env
+
+# fastapi/backend/__pycache__/, fastapi/crud/__pycache__/, fastapi/routers/__pycache__ 등도 포함됨
