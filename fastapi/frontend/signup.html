@@ -19,12 +19,28 @@
             <label for="signupPassword">비밀번호:</label>
             <input type="password" id="signupPassword" required>
 
-            <button type="submit">회원가입</button>
+            <!-- 전화번호 및 생년월일 필드 -->
+            <label for="signupPhoneNumber">전화번호:</label>
+            <input type="text" id="signupPhoneNumber" required placeholder="예: 01012345678 또는 010-1234-5678">
+
+            <label for="signupBirthDate">생년월일:</label>
+            <!-- type="date"를 type="text"로 변경하고 placeholder 추가 -->
+            <input type="text" id="signupBirthDate" required placeholder="예: YYYY-MM-DD">
+            <!-- // 전화번호 및 생년월일 필드 -->
+
+            <button type="submit">가입하기</button>
         </form>
 
         <div id="message"></div> <!-- 메시지 표시 영역 -->
 
-        <a href="login.html" class="link-to-page">이미 계정이 있으신가요? 로그인</a> <!-- 로그인 페이지 링크 -->
+        <p><a href="login.html" class="link-to-page">이미 계정이 있으신가요? 로그인</a></p>
+
+        <p style="text-align: center;">
+            <a href="find_username.html" class="link-to-page" style="display: inline-block; margin: 0 5px;">아이디 찾기</a>
+             |
+            <a href="change_password.html" class="link-to-page" style="display: inline-block; margin: 0 5px;">비밀번호 찾기</a>
+        </p>
+
     </div>
 
     <script src="script.js"></script> <!-- JavaScript 파일 연결 -->

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디 찾기</title>
+     <link rel="stylesheet" href="style.css">
+     <style>
+        /* style.css 기본 스타일 사용 */
+        input[type="text"], input[type="date"] { 
+             width: calc(100% - 22px); 
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+         .page-links p {
+            text-align: center; 
+            margin-bottom: 5px; 
+         }
+          .page-links a {
+            display: inline-block; 
+            margin: 0 5px; 
+            text-decoration: none; 
+            color: #007bff; 
+         }
+          .page-links a:hover {
+            text-decoration: underline;
+          }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>아이디 찾기</h1>
+
+        <form id="findUsernameForm">
+            <div>
+                <label for="find_phone_number">회원가입 시 사용한 전화번호:</label>
+                <input type="text" id="find_phone_number" required placeholder="예: 010-1234-5678">
+            </div>
+             <div>
+                <label for="find_birth_date">회원가입 시 사용한 생년월일:</label>
+                <input type="text" id="find_birth_date" required placeholder="예: YYYY-MM-DD">
+            </div>
+            <button type="submit">아이디 찾기</button>
+        </form>
+
+        <div id="message"></div> <!-- 메시지 표시 영역, script.js의 displayMessage 함수 사용 -->
+
+        
+        <div class="page-links">
+            <p>
+                <a href="login.html">로그인</a>|
+                <a href="signup.html">회원가입</a> 
+                
+            </p>
+             <p>
+                <a href="find_username.html">아이디 찾기</a> |
+                <a href="change_password.html">비밀번호 찾기</a>
+            </p>
+        </div>
+        <!-- // 다른 페이지 링크 -->
+
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>
