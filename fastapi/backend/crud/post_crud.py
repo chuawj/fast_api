@@ -3,7 +3,7 @@ from backend.models.post_model import Post
 from backend.schemas.post_schema import PostCreate, PostUpdate
 
 def create_post(db: Session, post: PostCreate):
-    db_post = Post(**post.dict())
+    db_post = Post(**post.dict())  # user_id 제거 후에도 dict 그대로 사용 가능
     db.add(db_post)
     db.commit()
     db.refresh(db_post)

@@ -1,0 +1,33 @@
+# Python 캐시 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상환경 폴더
+.venv/
+venv/
+env/
+
+# IDE 설정
+.vscode/
+.idea/
+
+# 시스템 관련
+.DS_Store
+Thumbs.db
+
+# 로그 및 DB 파일
+*.log
+*.sqlite3
+*.db
+
+# 환경변수 파일
+.env
+
+# 빌드 및 패키징
+build/
+dist/
+*.egg-info/
+
+# 기타 - 전체 폴더 하위 __pycache__ 무시
+**/__pycache__/

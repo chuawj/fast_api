@@ -23,4 +23,4 @@ class PostResponse(BaseModel):
     status: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True  # Pydantic v2

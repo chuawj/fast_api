@@ -8,16 +8,13 @@ from datetime import datetime
 from pydantic import BaseModel
 from backend.routers import post_router
 import bcrypt
-# 환경 변수 로드를 위해 BaseSettings 또는 python-dotenv 임포트
-# Pydantic의 BaseSettings를 사용하는 것이 일반적입니다.
-from pydantic_settings import BaseSettings # pydantic v2 이상에서는 pydantic_settings에서 임포트
-# 또는 python-dotenv를 사용하는 경우:
-# from dotenv import load_dotenv
-# import os
+from pydantic_settings import BaseSettings
+import os
+from backend.config.settings import settings
+from backend.database import Base, engine
 
-# .env 파일에서 환경 변수 로드 (python-dotenv 사용하는 경우)
-# load_dotenv()
 
+Base.metadata.create_all(bind=engine)
 
 # ----<설정 클래스 정의 (환경 변수 로드용)>------
 
@@ -31,8 +28,9 @@ class Settings(BaseSettings):
     DB_NAME: str
 
     # Pydantic BaseSettings의 내부 클래스 (설정 관리)
-    class Config:
-        env_file = "backend/.env"
+    model_config = {
+        "env_file": os.path.abspath(os.path.join(os.path.dirname(__file__), ".env"))
+    }
 
 
 # 설정 객체 생성

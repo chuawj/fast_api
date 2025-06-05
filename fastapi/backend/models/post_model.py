@@ -6,7 +6,7 @@ class Post(Base):
     __tablename__ = "posts"
 
     post_id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(Integer, nullable=False)
     title = Column(String(255), nullable=False)
     content = Column(Text, nullable=False)
     created_at = Column(DateTime, default=func.now())
