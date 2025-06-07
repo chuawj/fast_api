@@ -7,7 +7,7 @@ body {
     color: #333;
 }
 .container {
-    max-width: 400px; /* 페이지별로 분리되었으니 너비를 줄여도 좋습니다 */
+    max-width: 400px;
     margin: auto;
     background: #fff;
     padding: 20px;
@@ -20,7 +20,7 @@ h2 {
     margin-bottom: 20px;
 }
 form {
-    margin-bottom: 20px; /* 페이지별 분리 */
+    margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -33,12 +33,14 @@ label {
 }
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-    width: calc(100% - 22px); /* 패딩 고려 */
+input[type="password"],
+input[type="date"] {
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 button {
     display: block;
@@ -50,7 +52,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px; /* 버튼 위 간격 */
+    margin-top: 10px;
 }
 button:hover {
     background-color: #4cae4c;
@@ -72,7 +74,7 @@ button:hover {
     color: #a94442;
     border: 1px solid #ebccd1;
 }
-.link-to-page { /* 다른 페이지로 이동하는 링크 스타일 */
+.link-to-page {
     display: block;
     text-align: center;
     margin-top: 20px;
@@ -82,3 +84,45 @@ button:hover {
 .link-to-page:hover {
     text-decoration: underline;
 }
+
+/* --- 비밀번호 보기/숨기기 기능 관련 스타일 --- */
+
+.password-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.password-field label {
+     display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.password-field input[type="password"],
+.password-field input[type="text"].password-visible {
+     width: calc(100% - 60px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 0; 
+}
+.password-field .toggle-password {
+    position: absolute;
+    top: 30px; 
+    right: 0px;
+    padding: 5px 8px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+ .password-field .toggle-password:hover {
+     background-color: #ccc;
+ }
+

@@ -28,7 +28,7 @@ class Settings(BaseSettings):
 
     # BaseSettings의 내부 클래스로 설정 관리 방식을 지정합니다.
     class Config:
-        env_file = "C:\\Users\\hanmy\\fast_api\\fastapi\\backend\\.gitignore\\.env"
+        env_file = "C:\\Users\\hanmy\\fast_api\\fastapi\\backend\\.env"
 class UserFindRequest(BaseModel):
     phone_number: str
     birth_date: date 
@@ -51,6 +51,9 @@ settings = Settings()
 # --------------------
 # 데이터베이스 설정
 # --------------------
+# Pydantic의 BaseSettings를 상속받아 설정 클래스 정의
+
+settings = Settings()
 
 DATABASE_URL = f"mysql+mysqlconnector://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}/{settings.DB_NAME}"
 
@@ -269,5 +272,5 @@ def change_password(request: PasswordChangeRequest, db: Session = Depends(get_db
 
     return {"message": "Password updated successfully"}
 
+#cd C:\Users\hanmy\fast_api\fastapi
 # uvicorn backend.main:app --reload
-

@@ -21,13 +21,19 @@ function formatBirthDateToISO(dateString) {
     if (!dateString) return null;
     dateString = dateString.trim();
 
-    if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
-        const [year, month, day] = dateString.split('-').map(Number);
-        const dateObj = new Date(year, month - 1, day);
-        if (dateObj.getFullYear() === year && dateObj.getMonth() === month - 1 && dateObj.getDate() === day) {
-            return dateString;
+    const numericOnly = dateString.replace(/\D/g, '');
+
+    if (/^\d{8}$/.test(numericOnly)) {
+        const year = numericOnly.substring(0, 4);
+        const month = numericOnly.substring(4, 6);
+        const day = numericOnly.substring(6, 8);
+        const isoFormatted = `${year}-${month}-${day}`;
+        const dateObj = new Date(year, parseInt(month, 10) - 1, parseInt(day, 10));
+        if (dateObj.getFullYear() === parseInt(year, 10) && dateObj.getMonth() === parseInt(month, 10) - 1 && dateObj.getDate() === parseInt(day, 10)) {
+             return isoFormatted;
+        } else {
+             return null;
         }
-         return null;
     }
 
     const parts = dateString.replace(/[.\/]/g, '-').split('-');
@@ -38,10 +44,13 @@ function formatBirthDateToISO(dateString) {
         const day = parts[2].padStart(2, '0');
 
         if (year.length === 4 && month.length === 2 && day.length === 2) {
-             const dateObj = new Date(`${year}-${month}-${day}`);
-             if (dateObj.toISOString().slice(0, 10) === `${year}-${month}-${day}`) {
-                 return `${year}-${month}-${day}`;
-             }
+             const isoFormatted = `${year}-${month}-${day}`;
+              const dateObj = new Date(year, parseInt(month, 10) - 1, parseInt(day, 10));
+              if (dateObj.getFullYear() === parseInt(year, 10) && dateObj.getMonth() === parseInt(month, 10) - 1 && dateObj.getDate() === parseInt(day, 10)) {
+                  return isoFormatted;
+              } else {
+                  return null;
+              }
         }
     }
 
@@ -183,7 +192,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+    togglePasswordButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetInputId = button.dataset.target;
+            const passwordInput = document.getElementById(targetInputId);
 
+            if (!passwordInput) {
+                 console.error(`Password input with ID "${targetInputId}" not found.`);
+                 return;
+            }
+            const currentType = passwordInput.getAttribute('type');
+
+            const newType = currentType === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', newType);
+
+            button.textContent = newType === 'password' ? '보기' : '숨기기';
+        });
+    });
     const changePasswordForm = document.getElementById('changePasswordForm');
     const identityVerificationSection = document.getElementById('identity-verification-section');
     const passwordChangeSection = document.getElementById('password-change-section');
