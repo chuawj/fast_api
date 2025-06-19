@@ -192,22 +192,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    const togglePasswordButtons = document.querySelectorAll('.toggle-password');
-    togglePasswordButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetInputId = button.dataset.target;
+    const togglePasswordIcons = document.querySelectorAll('.toggle-password-icon');
+    togglePasswordIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            const targetInputId = icon.dataset.target;
             const passwordInput = document.getElementById(targetInputId);
 
             if (!passwordInput) {
                  console.error(`Password input with ID "${targetInputId}" not found.`);
                  return;
             }
+
             const currentType = passwordInput.getAttribute('type');
 
             const newType = currentType === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', newType);
 
-            button.textContent = newType === 'password' ? '보기' : '숨기기';
+            icon.classList.toggle('fa-eye'); 
+            icon.classList.toggle('fa-eye-slash'); 
         });
     });
     const changePasswordForm = document.getElementById('changePasswordForm');
