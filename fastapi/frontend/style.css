@@ -7,7 +7,7 @@ body {
     color: #333;
 }
 .container {
-    max-width: 400px; /* 페이지별로 분리되었으니 너비를 줄여도 좋습니다 */
+    max-width: 400px;
     margin: auto;
     background: #fff;
     padding: 20px;
@@ -20,7 +20,7 @@ h2 {
     margin-bottom: 20px;
 }
 form {
-    margin-bottom: 20px; /* 페이지별 분리 */
+    margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -33,12 +33,14 @@ label {
 }
 input[type="text"],
 input[type="email"],
-input[type="password"] {
-    width: calc(100% - 22px); /* 패딩 고려 */
+input[type="password"],
+input[type="date"] {
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 button {
     display: block;
@@ -50,7 +52,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px; /* 버튼 위 간격 */
+    margin-top: 10px;
 }
 button:hover {
     background-color: #4cae4c;
@@ -72,7 +74,7 @@ button:hover {
     color: #a94442;
     border: 1px solid #ebccd1;
 }
-.link-to-page { /* 다른 페이지로 이동하는 링크 스타일 */
+.link-to-page {
     display: block;
     text-align: center;
     margin-top: 20px;
@@ -81,4 +83,109 @@ button:hover {
 }
 .link-to-page:hover {
     text-decoration: underline;
+}
+
+.password-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.password-field label {
+     display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.password-field input[type="password"],
+.password-field input[type="text"].password-visible {
+    width: calc(100% - 60px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 0; 
+}
+.password-field .toggle-password {
+    position: absolute;
+    top: 30px; 
+    right: 0px;
+    padding: 5px 8px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+ .password-field .toggle-password:hover {
+     background-color: #ccc;
+ }
+
+.password-input-container {
+    position: relative; /* 아이콘 absolute 위치의 기준 */
+    margin-bottom: 15px; /* 아래 요소와의 간격 */
+    /* 필요하다면 라벨과의 간격 조정을 위해 margin-top 추가 */
+}
+
+.password-input-container label {
+     display: block; /* 라벨을 블록 요소로 만들어 줄바꿈 */
+     margin-bottom: 5px; /* 라벨 아래 간격 */
+     font-weight: bold; /* 글자 굵게 */
+}
+
+.password-input-container input[type="password"],
+.password-input-container input[type="text"] {
+    width: 100%; /* 전체 너비 사용 */
+    padding: 10px 20px 10px 10px; /* 오른쪽 패딩을 30px로 줄임 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 0;
+}
+
+
+/* 비밀번호 보기/숨기기 아이콘 */
+.password-input-container .toggle-password-icon {
+    position: absolute; /* 부모(.password-input-container) 기준 위치 */
+    top: 50px; /* 라벨 높이 + margin-bottom + 입력 필드 패딩/테두리 고려하여 조정 */
+    right: 12px; /* 입력 필드 오른쪽 패딩 안쪽에 배치 */
+    transform: translateY(-50%); /* 아이콘 세로 중앙 정렬 */
+    cursor: pointer; /* 마우스 오버 시 포인터 모양 */
+    color: #555; /* 아이콘 색상 */
+    font-size: 16px; /* 아이콘 크기 */
+    z-index: 10; /* 다른 요소 위에 표시되도록 */
+}
+
+ .password-input-container .toggle-password-icon:hover {
+     color: #000; /* 마우스 오버 시 색상 변경 */
+ }
+.page-links p {
+    text-align: center;
+    margin-bottom: 5px;
+}
+.page-links a {
+    display: inline-block;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+.page-links a:hover {
+    text-decoration: underline;
+}
+
+#password-change-section {
+    display: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+.note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 15px;
 }
