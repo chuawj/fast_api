@@ -1,0 +1,127 @@
+/* frontend/style.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+form {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: #4cae4c;
+}
+#message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    min-height: 1.6em;
+}
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d0e9c6;
+}
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
+.link-to-page {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+.link-to-page:hover {
+    text-decoration: underline;
+}
+
+/* --- 비밀번호 보기/숨기기 기능 관련 스타일 --- */
+
+.password-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.password-field label {
+     display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.password-field input[type="password"],
+.password-field input[type="text"].password-visible {
+     width: calc(100% - 60px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 0; 
+}
+.password-field .toggle-password {
+    position: absolute;
+    top: 30px; 
+    right: 0px;
+    padding: 5px 8px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+ .password-field .toggle-password:hover {
+     background-color: #ccc;
+ }

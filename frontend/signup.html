@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>회원가입</h2>
+        <form id="signupForm">
+            <label for="signupUsername">사용자 이름:</label>
+            <input type="text" id="signupUsername" required>
+
+            <label for="signupEmail">이메일:</label>
+            <input type="email" id="signupEmail" required>
+
+            <label for="signupPassword">비밀번호:</label>
+            <input type="password" id="signupPassword" required>
+
+            <!-- 전화번호 및 생년월일 필드 -->
+            <label for="signupPhoneNumber">전화번호:</label>
+            <input type="text" id="signupPhoneNumber" required placeholder="예: 01012345678 또는 010-1234-5678">
+
+            <label for="signupBirthDate">생년월일:</label>
+            <!-- type="date"를 type="text"로 변경하고 placeholder 추가 -->
+            <input type="text" id="signupBirthDate" required placeholder="예: YYYY-MM-DD">
+            <!-- // 전화번호 및 생년월일 필드 -->
+
+            <button type="submit">가입하기</button>
+        </form>
+
+        <div id="message"></div> <!-- 메시지 표시 영역 -->
+
+        <p><a href="login.html" class="link-to-page">이미 계정이 있으신가요? 로그인</a></p>
+
+        <p style="text-align: center;">
+            <a href="find_username.html" class="link-to-page" style="display: inline-block; margin: 0 5px;">아이디 찾기</a>
+             |
+            <a href="change_password.html" class="link-to-page" style="display: inline-block; margin: 0 5px;">비밀번호 찾기</a>
+        </p>
+
+    </div>
+
+    <script src="/frontend/script.js"></script>
+</body>
+</html>
