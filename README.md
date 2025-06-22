@@ -28,16 +28,27 @@
 ## 폴더 구조
 
 project-root/
+<br>
 ├── backend/
+<br>
 │ ├── main.py # FastAPI 진입점 (회원, 게시글, 인증 전체 처리)
+<br>
 │ ├── routers/
+<br>
 │ │ └── post_router.py # 게시글 CRUD 라우터
+<br>
 │ └── ... # 설정, DB, 기타 모듈
+<br>
 ├── frontend/
+<br>
 │ ├── post.html # 게시판 페이지 (JS 연동)
+<br>
 │ ├── script.js # 프론트엔드 로직 (회원, 글, 인증 등)
+<br>
 │ └── ... # 추가 HTML (로그인, 회원가입 등)
+<br>
 └── README.md # 프로젝트 소개 파일 (이 문서)
+<br>
 
 
 
@@ -56,10 +67,16 @@ DB_NAME=
 
 **MySQL 데이터베이스 및 테이블 준비**  
    (스키마/테이블 자동 생성은 main.py에서 처리, 직접 생성 시 DDL 참고)
+
+<br>
+
 **서버 실행**
     ```bash
     uvicorn backend.main:app --reload
     ```
+
+<br>
+
 **브라우저 접속**  
    [http://127.0.0.1:8000/frontend/post.html](http://127.0.0.1:8000/frontend/post.html)
 
