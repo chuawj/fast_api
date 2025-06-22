@@ -78,7 +78,9 @@ DB_NAME=
 <br>
 
 **브라우저 접속**  
-   [http://127.0.0.1:8000/frontend/post.html](http://127.0.0.1:8000/frontend/post.html)
+   [http://127.0.0.1:8000/frontend/post.html](http://127.0.0.1:8000/frontend/post.html) - 게시글 작성페이지
+<br>
+   [http://127.0.0.1:8000/frontend/login.html](http://127.0.0.1:8000/frontend/login.html) - 로그인 페이지
 
 ## 커밋 가이드
 
